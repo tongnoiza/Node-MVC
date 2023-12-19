@@ -1,5 +1,17 @@
+import express from 'express'
 
-let {set,app,f}  = require('./middleware/initial')
-let product = require('./Route/Product')
-app.use('/Product',product)
+import bodyparser from 'body-parser'
+import user from './Route/User.js'
+import motorlog from './Route/motorlog.js'
+import cors from 'cors'
+const app = express();
+app.use(cors())
+app.use(bodyparser.urlencoded({ extended: false }))
+app.use(express.json())
 
+
+app.use('/User',user)
+app.use('/log',motorlog)
+app.listen(3001,()=>{
+  console.log('run at');
+})
