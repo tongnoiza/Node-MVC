@@ -11,6 +11,13 @@ app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
 
+function onSocketPreError(e) {
+  console.log(e);
+}
+
+function onSocketPostError(e) {
+  console.log(e);
+}
 
 app.use('/User',user)
 app.use('/log',motorlog)
