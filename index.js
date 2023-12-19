@@ -18,7 +18,7 @@ app.use('/log',motorlog)
 const s = app.listen(3001,()=>{
   console.log('run at');
 })
-
+const wss = new WebSocketServer({noServer:true}); 
 s.on('upgrade', (req, socket, head) => {
   socket.on('error', onSocketPreError);
 
@@ -34,7 +34,7 @@ s.on('upgrade', (req, socket, head) => {
       wss.emit('connection', ws, req);
   });
 });
-const wss = new WebSocketServer({noServer:true}); 
+
 // สร้าง websockets server ที่ port 4000
 console.log('// สร้าง websockets server ที่ port 80');
 
