@@ -5,8 +5,6 @@ console.log('// สร้าง websockets server ที่ port 80');
 
 wss.on('connection', function connection(ws) { 
     console.log('มีการเชื่อมต่อ ');
-    
-    
     // สร้าง connection
   ws.on('message', function incoming(message) {
    // รอรับ data อะไรก็ตาม ที่มาจาก client แบบตลอดเวลา

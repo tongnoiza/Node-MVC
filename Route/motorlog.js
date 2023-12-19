@@ -13,9 +13,10 @@ const log = sequelize.define("Log", {
   Status: DataTypes.TEXT,
   time: DataTypes.TEXT,
 });
-(async () => {
-  await sequelize.sync({ force: false});
-})();
+
+// (async () => {
+//   await sequelize.sync({ force: false});
+// })();
 
 route.post("/save", async (req, res) => {
   console.log(req.query);
