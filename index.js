@@ -3,7 +3,7 @@ import {WebSocketServer}from 'ws'
 import bodyparser from 'body-parser'
 import user from './Route/User.js'
 import motorlog from './Route/motorlog.js'
-import './Route/websocket.js'
+// import './Route/websocket.js'
 
 import cors from 'cors'
 const app = express();
