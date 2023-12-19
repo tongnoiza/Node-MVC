@@ -1,8 +1,8 @@
 import {WebSocketServer}from 'ws'
-
-const wss = new WebSocketServer({ port: 80 }); 
+const wss = new WebSocketServer({ port: 443 }); 
 // สร้าง websockets server ที่ port 4000
 console.log('// สร้าง websockets server ที่ port 80');
+
 wss.on('connection', function connection(ws) { 
     console.log('มีการเชื่อมต่อ ');
     
