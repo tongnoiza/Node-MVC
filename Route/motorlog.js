@@ -9,20 +9,20 @@ route.use(express.json());
 import { Sequelize, Model, DataTypes } from "sequelize";
 
 const log = sequelize.define("Log", {
-  motorId: DataTypes.TEXT,
-  Status: DataTypes.TEXT,
   time: DataTypes.TEXT,
+  Status: DataTypes.TEXT,
+  motorId: DataTypes.TEXT,
 });
 
-// (async () => {
-//   await sequelize.sync({ force: false});
-// })();
+(async () => {
+  await sequelize.sync({ force:true});
+})();
 
 route.post("/save", async (req, res) => {
   console.log(req.query);
   const resp = await log.create({
     ...req.query,
-    time:''+moment().locale("th").format("LLLL"),
+    time:''+moment().locale("th").format("lll"),
   });
   await resp.save();
   res.send(resp);
