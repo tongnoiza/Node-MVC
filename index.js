@@ -24,11 +24,14 @@ app.use('/log',motorlog)
 const s = app.listen(port,()=>{
   console.log(`runing at ${port}`);
 })
+
 const wss = new WebSocketServer({noServer:true ,path: "/ws",}); 
 
 s.on('upgrade', (req, socket, head) => {
   socket.on('error', onSocketPreError);
-
+console.log({req});
+console.log({socket});
+console.log({head});
   // perform auth
   // if (!!req.headers['BadAuth']) {
   //     socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
