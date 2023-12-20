@@ -4,13 +4,12 @@ import bodyparser from 'body-parser'
 import user from './Route/User.js'
 import motorlog from './Route/motorlog.js'
 // import './Route/websocket.js'
-
 import cors from 'cors'
 const app = express();
 app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
-const port = 3001
+const port = 443
 function onSocketPreError(e) {
   console.log(e);
 }
