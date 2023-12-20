@@ -10,7 +10,7 @@ const app = express();
 app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
-
+const port = 443
 function onSocketPreError(e) {
   console.log(e);
 }
@@ -22,8 +22,8 @@ function onSocketPostError(e) {
 app.use('/User',user)
 app.use('/log',motorlog)
 
-const s = app.listen(3001,()=>{
-  console.log('run at');
+const s = app.listen(port,()=>{
+  console.log(`runing at ${port}`);
 })
 const wss = new WebSocketServer({noServer:true}); 
 s.on('upgrade', (req, socket, head) => {
@@ -43,7 +43,7 @@ s.on('upgrade', (req, socket, head) => {
 });
 
 // สร้าง websockets server ที่ port 4000
-console.log('// สร้าง websockets server ที่ port 80');
+console.log('// สร้าง websockets server ที่ port 443');
 
 wss.on('connection', function connection(ws) { 
     console.log('มีการเชื่อมต่อ ');
