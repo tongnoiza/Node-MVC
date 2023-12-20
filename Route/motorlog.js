@@ -30,7 +30,7 @@ route.post("/save", async (req, res) => {
 
 route.get("/findall", async (req, res) => {
   console.log(req.query);
-  const resp = await log.findAll({ order: [["createdAt", "DESC"]] });
+  const resp = await log.findAll({ attributes: ['time', 'Status','motorId'], order: [["createdAt", "DESC"]] });
   res.send(resp);
 });
 
