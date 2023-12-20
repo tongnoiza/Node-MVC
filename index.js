@@ -10,7 +10,7 @@ const app = express();
 app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
-const port = 443
+const port = 3001
 function onSocketPreError(e) {
   console.log(e);
 }
@@ -25,7 +25,8 @@ app.use('/log',motorlog)
 const s = app.listen(port,()=>{
   console.log(`runing at ${port}`);
 })
-const wss = new WebSocketServer({noServer:true}); 
+const wss = new WebSocketServer({noServer:true ,path: "/ws",}); 
+
 s.on('upgrade', (req, socket, head) => {
   socket.on('error', onSocketPreError);
 
@@ -42,8 +43,7 @@ s.on('upgrade', (req, socket, head) => {
   });
 });
 
-// สร้าง websockets server ที่ port 4000
-console.log('// สร้าง websockets server ที่ port 443');
+
 
 wss.on('connection', function connection(ws) { 
     console.log('มีการเชื่อมต่อ ');
@@ -51,6 +51,7 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
    // รอรับ data อะไรก็ตาม ที่มาจาก client แบบตลอดเวลา
     console.log('received: %s', message);
+    ws.send(`ข้อความที่ได้รับ ${message}`);
   });
 ws.on('close', function close() {
   // จะทำงานเมื่อปิด Connection ในตัวอย่างคือ ปิด Browser
