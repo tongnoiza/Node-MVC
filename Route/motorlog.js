@@ -2,7 +2,6 @@ import express from "express";
 import bodyparser from "body-parser";
 import sequelize from "../config/connectdb.js";
 import moment from "moment";
-
 const route = express.Router();
 route.use(bodyparser.urlencoded({ extended: false }));
 route.use(express.json());
@@ -28,7 +27,7 @@ route.post("/save", async (req, res) => {
   res.send(resp);
 });
 
-route.get("/findall", async (req, res) => {
+route.get("/report", async (req, res) => {
   console.log(req.query);
   const resp = await log.findAll({ attributes: ['motorId','Status','time'], order: [["createdAt", "DESC"]] });
   res.send(resp);
