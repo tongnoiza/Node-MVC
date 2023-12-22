@@ -17,12 +17,13 @@ const log = sequelize.define("Log", {
   await sequelize.sync({ force:true});
 })();
 
-route.post("/save", async (req, res) => {
+route.post("/save",async (req, res) => {
   console.log(req.query);
+  console.log('kkll '+moment().format("lll"));
   const resp = await log.create({
     ...req.query,
-    time:''+moment().locale("th").format("lll"),
-  });
+    time:''+moment().format("lll"),
+  })
   await resp.save();
   res.send(resp);
 });
