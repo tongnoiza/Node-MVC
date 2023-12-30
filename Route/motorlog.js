@@ -16,11 +16,11 @@ const log = sequelize.define("Log", {
 (async () => {
   await sequelize.sync({ force:true});
 })();
-route.get("/save",async (req, res) => {
-  console.log(req.query);
+route.get("/save/:Status/:motorId",async (req, res) => {
+  console.log('params ',req.params);
   console.log('kkll '+moment().format("lll"));
   const resp = await log.create({
-    ...req.query,
+    ...req.params,
     time:''+moment().locale('TH').format("lll"),
   })
   await resp.save();
