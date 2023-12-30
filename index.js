@@ -7,7 +7,7 @@ const app = express();
 app.use(cors())
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(express.json())
-const port = 443
+const port = 3000
 
 app.use('/User',user)
 app.use('/log',motorlog)
