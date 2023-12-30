@@ -16,7 +16,7 @@ const log = sequelize.define("Log", {
 (async () => {
   await sequelize.sync({ force:true});
 })();
-route.post("/save",async (req, res) => {
+route.get("/save",async (req, res) => {
   console.log(req.query);
   console.log('kkll '+moment().format("lll"));
   const resp = await log.create({
