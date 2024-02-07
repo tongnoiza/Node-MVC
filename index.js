@@ -11,17 +11,6 @@ app.use(bodyparser.urlencoded({ extended: false }))
 const port = 443
 
 
-const wss = new WebSocketServer({ port: port});
-
-wss.on('connection', function connection(ws) {
-  ws.on('error', console.error);
-
-  ws.on('message', function message(data) {
-    console.log('received: %s', data);
-  });
-
-  ws.send('something');
-});
 
 app.use(express.json())
 
@@ -29,7 +18,7 @@ app.use(express.json())
 app.use('/User',user)
 app.use('/log',motorlog)
 
-app.listen(8080,()=>{
+app.listen(443,()=>{
   console.log(`runing at port ${port}`);
 })
 
