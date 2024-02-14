@@ -20,9 +20,16 @@ const log = sequelize.define("Log", {
 
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
+  var currentdate = new Date();
+  let datetext = currentdate.toTimeString();
+  datetext = datetext.split(' ')[0];
+  obj.lastupdate = " " + currentdate.getDate() + "/"
+    + (currentdate.getMonth() + 1) + "/"
+    + currentdate.getFullYear() + "\n"
+    + datetext
   const resp = await log.create({
     ...req.query,
-    time:''+moment().locale('TH').format("lll"),
+    time:datetext,
   })
   await resp.save();
   res.send(resp);
