@@ -23,13 +23,13 @@ route.get("/save",async (req, res) => {
   var currentdate = new Date();
   let datetext = currentdate.toTimeString();
   datetext = datetext.split(' ')[0];
-  obj.lastupdate = " " + currentdate.getDate() + "/"
+  let lastupdate = " " + currentdate.getDate() + "/"
     + (currentdate.getMonth() + 1) + "/"
     + currentdate.getFullYear() + "\n"
     + datetext
   const resp = await log.create({
     ...req.query,
-    time:datetext,
+    time: lastupdate,
   })
   await resp.save();
   res.send(resp);
