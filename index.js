@@ -14,7 +14,6 @@ const wss = new WebSocketServer({port:8080 });
 
 app.use(express.json());
 app.on("upgrade", (request, socket, head) => {
-
   wss.handleUpgrade(request, socket, head, (ws) => {
     wss.emit("connection", ws, request);
   });
