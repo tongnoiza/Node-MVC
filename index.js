@@ -10,17 +10,22 @@ app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 const port = 443;
 
-const wss = new WebSocketServer({ noServer: true });
+const wss = new WebSocketServer({port:8080 });
 
 app.use(express.json());
 app.on("upgrade", (request, socket, head) => {
-  console.log({ request });
-  console.log({ socket });
-  console.log({ head });
+
   wss.handleUpgrade(request, socket, head, (ws) => {
     wss.emit("connection", ws, request);
   });
 });
+wss.on("connection",(ws)=>{
+  console.log("เชื่อมต่อ");
+   ws.on('message', function message(data) {
+      console.log('received: %s', data);
+      ws.send('something');
+    });
+})
 
 app.use("/User", user);
 app.use("/log", motorlog);
