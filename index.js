@@ -8,11 +8,11 @@ import { WebSocketServer } from "ws";
 const app = express();
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
-const port = 443;
+const port = 80;
 app.use(express.json());
 app.use("/User", user);
 app.use("/log", motorlog);
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: 443 });
 // const wss = new WebSocketServer({ noServer: true });
 app.on("upgrade", (request, socket, head) => {
   wss.handleUpgrade(request, socket, head, (ws) => {
