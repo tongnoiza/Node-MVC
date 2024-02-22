@@ -10,8 +10,6 @@ const port = 443;
 app.use(express.json());
 app.use("/User", user);
 app.use("/log", motorlog);
-
-
 app.listen(port, () => {
   console.log(`runing at port ${port}`);
 });

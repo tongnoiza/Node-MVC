@@ -16,7 +16,10 @@ const log = sequelize.define("Log", {
 (async () => {
   await sequelize.sync({ force:true});
 })();
-
+route.get("/save",async (req, res) => {
+  console.log(req.query);
+  res.sendStatus(200).send("ok")
+})
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
   const resp = await log.create({
