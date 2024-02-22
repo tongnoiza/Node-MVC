@@ -18,7 +18,7 @@ const log = sequelize.define("Log", {
 })();
 route.get("/test",async (req, res) => {
   console.log(req.query);
-  res.sendStatus(200).send("ok")
+  res.send("ok")
 })
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
