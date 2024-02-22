@@ -16,7 +16,7 @@ const log = sequelize.define("Log", {
 (async () => {
   await sequelize.sync({ force:true});
 })();
-route.get("/save",async (req, res) => {
+route.get("/test",async (req, res) => {
   console.log(req.query);
   res.sendStatus(200).send("ok")
 })
