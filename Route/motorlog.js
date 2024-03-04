@@ -12,19 +12,17 @@ const log = sequelize.define("Log", {
   Status: DataTypes.TEXT,
   motorId: DataTypes.TEXT,
 });
-
+console.log(moment().locale('th').format("lll"));
 (async () => {
   await sequelize.sync({ force:true});
 })();
-route.get("/test",async (req, res) => {
-  console.log(req.query);
-  res.send("ok")
-})
+
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
+  let timestamp = moment().locale('th').format("lll")
   const resp = await log.create({
     ...req.query,
-    time:moment().locale('th').format("lll"),
+    time:timestamp,
   })
   await resp.save();
   res.send(resp);
