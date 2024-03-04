@@ -12,14 +12,23 @@ const log = sequelize.define("Log", {
   Status: DataTypes.TEXT,
   motorId: DataTypes.TEXT,
 });
-console.log(moment().locale('th').format("lll"));
+console.log(moment().up);
 (async () => {
   await sequelize.sync({ force:true});
 })();
-
+function getcurrenttime(){
+  var currentdate = new Date();
+  let datetext = currentdate.toTimeString();
+  datetext = datetext.split(' ')[0];
+  return  " " + currentdate.getDate() + "/"
+    + (currentdate.getMonth() + 1) + "/"
+    + currentdate.getFullYear() + "\n"
+    + datetext
+}
+console.log('getcurrenttime ',getcurrenttime());
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
-  let timestamp = moment().locale('th').format("lll")
+  let timestamp = moment().locale('th').format("lll").humanize(true)
   const resp = await log.create({
     ...req.query,
     time:timestamp,
