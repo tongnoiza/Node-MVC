@@ -12,6 +12,7 @@ const log = sequelize.define("Log", {
   Status: DataTypes.TEXT,
   motorId: DataTypes.TEXT,
 });
+
 (async () => {
   await sequelize.sync({ force:true});
 })();
