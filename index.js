@@ -6,7 +6,7 @@ import cors from "cors";
 const app = express();
 app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
-const port = 443;
+const port = 8080;
 
 app.use(express.json());
 app.use("/log", motorlog);
