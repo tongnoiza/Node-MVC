@@ -28,7 +28,7 @@ const log = sequelize.define("Log", {
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
   const dmy = new Date()
-const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours(),dmy.getMinutes(),dmy.getSeconds())
+const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours().toLocaleString('th-TH'),dmy.getMinutes(),dmy.getSeconds())
   const resp = await log.create({
     ...req.query,
     time:date.toLocaleString('th-TH'),
