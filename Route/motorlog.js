@@ -13,9 +13,9 @@ const log = sequelize.define("Log", {
   motorId: DataTypes.TEXT,
 });
 
-(async () => {
-  await sequelize.sync({ force:true});
-})();
+// (async () => {
+//   await sequelize.sync({ force:true});
+// })();
 
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
