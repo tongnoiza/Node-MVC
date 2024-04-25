@@ -7,14 +7,7 @@ route.use(bodyparser.urlencoded({ extended: false }));
 route.use(express.json());
 import { Sequelize, Model, DataTypes } from "sequelize";
 
-// const result = date.toLocaleDateString('th-TH', {
-//   year: 'numeric',
-//   month: 'long',
-//   day: 'numeric',
-//   hour:'2-digit',
-//   minute:'2-digit',
-//   second:'2-digit'
-// })
+
 const log = sequelize.define("Log", {
   time: DataTypes.TEXT,
   Status: DataTypes.TEXT,
@@ -24,20 +17,22 @@ const log = sequelize.define("Log", {
 // (async () => {
 //   await sequelize.sync({ force:true});
 // })();
-const date = new Date();
-const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-console.log('เวลาไทย ',date.toLocaleTimeString('th-TH', options));
-console.log('เวลาไทย ',date.toLocaleString('th-TH'));
 
-// const dmy = new Date()
-// const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours().toLocaleString('th-TH'),dmy.getMinutes(),dmy.getSeconds())
-// console.log('date.toLocaleString(th-TH) ',date.toLocaleString('th-TH')); 
-// date.toUTCString()
+const date = new Date();
+let [currentdate,time] = date.toLocaleString('th-TH').split(' ')
+let nowtime = currentdate+' '+(+time.split(':')[0]+7) +(':'+time.split(':')[1]+':'+time.split(':')[2])
+
+console.log('เวลาไทย ',nowtime);
+
 route.get("/save",async (req, res) => {
+
+  const date = new Date();
+  let [currentdate,time] = date.toLocaleString('th-TH').split(' ')
+let nowtime = currentdate+' '+(+time.split(':')[0]+7) +(':'+time.split(':')[1]+':'+time.split(':')[2])
   console.log('params ',req.query);
    const resp = await log.create({
     ...req.query,
-    time:date.toLocaleString('th-TH')
+    time:nowtime
   })
   await resp.save();
   res.send(resp);
