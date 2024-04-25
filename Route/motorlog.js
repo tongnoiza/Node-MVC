@@ -7,14 +7,14 @@ route.use(bodyparser.urlencoded({ extended: false }));
 route.use(express.json());
 import { Sequelize, Model, DataTypes } from "sequelize";
 
-const result = date.toLocaleDateString('th-TH', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  hour:'2-digit',
-  minute:'2-digit',
-  second:'2-digit'
-})
+// const result = date.toLocaleDateString('th-TH', {
+//   year: 'numeric',
+//   month: 'long',
+//   day: 'numeric',
+//   hour:'2-digit',
+//   minute:'2-digit',
+//   second:'2-digit'
+// })
 const log = sequelize.define("Log", {
   time: DataTypes.TEXT,
   Status: DataTypes.TEXT,
