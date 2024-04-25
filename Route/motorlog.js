@@ -27,6 +27,8 @@ const log = sequelize.define("Log", {
 const date = new Date();
 const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
 console.log('เวลาไทย ',date.toLocaleTimeString('th-TH', options));
+console.log('เวลาไทย ',date.toLocaleString('th-TH'));
+
 // const dmy = new Date()
 // const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours().toLocaleString('th-TH'),dmy.getMinutes(),dmy.getSeconds())
 // console.log('date.toLocaleString(th-TH) ',date.toLocaleString('th-TH')); 
