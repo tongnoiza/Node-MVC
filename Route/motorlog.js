@@ -19,10 +19,17 @@ const log = sequelize.define("Log", {
 
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
-  let timestamp = moment().locale('th').format("lll")
+  const dmy = new Date()
+  const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate())
+  
+  const result = date.toLocaleDateString('th-TH', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
   const resp = await log.create({
     ...req.query,
-    time:timestamp,
+    time:result,
   })
   await resp.save();
   res.send(resp);
