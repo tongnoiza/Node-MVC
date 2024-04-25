@@ -6,7 +6,16 @@ const route = express.Router();
 route.use(bodyparser.urlencoded({ extended: false }));
 route.use(express.json());
 import { Sequelize, Model, DataTypes } from "sequelize";
-
+const dmy = new Date()
+const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours(),dmy.getMinutes(),dmy.getSeconds())
+const result = date.toLocaleDateString('th-TH', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour:'2-digit',
+  minute:'2-digit',
+  second:'2-digit'
+})
 const log = sequelize.define("Log", {
   time: DataTypes.TEXT,
   Status: DataTypes.TEXT,
@@ -19,16 +28,7 @@ const log = sequelize.define("Log", {
 
 route.get("/save",async (req, res) => {
   console.log('params ',req.query);
-  const dmy = new Date()
-  const date = new Date(dmy.getFullYear(), dmy.getMonth(), dmy.getDate(),dmy.getHours(),dmy.getMinutes(),dmy.getSeconds())
-  const result = date.toLocaleDateString('th-TH', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour:'2-digit',
-    minute:'2-digit',
-    second:'2-digit'
-  })
+
   const resp = await log.create({
     ...req.query,
     time:result,
