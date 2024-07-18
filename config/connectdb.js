@@ -1,7 +1,7 @@
 import  Sequelize  from 'sequelize'
 
 // Option 1: Passing a connection URI
-const sequelize = new Sequelize('postgres://log_2l63_user:TefO3Xp3ufB9q0VlYZP9oPRDvJLc6IKB@dpg-co5nh2e3e1ms73b8uha0-a.singapore-postgres.render.com/log_2l63', {
+const sequelize = new Sequelize('postgresql://test:IdNxjxHOp50xdaNLSVVRB8N2Dr15hUJO@dpg-cqc9euuehbks738bfsqg-a.singapore-postgres.render.com/motorlog', {
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: { ssl: {
