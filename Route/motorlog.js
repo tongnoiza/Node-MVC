@@ -14,9 +14,9 @@ const log = sequelize.define("Log", {
   motorId: DataTypes.TEXT,
 });
 
-// (async () => {
-//   await sequelize.sync({ force:true});
-// })();
+(async () => {
+  await sequelize.sync();
+})();
 
 const date = new Date();
 let [currentdate,time] = date.toLocaleString('th-TH').split(' ')
