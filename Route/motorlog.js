@@ -25,7 +25,6 @@ let nowtime = currentdate+' '+(+time.split(':')[0]+7) +(':'+time.split(':')[1]+'
 console.log('เวลาไทย ',nowtime);
 
 route.get("/save",async (req, res) => {
-
   const date = new Date();
   let [currentdate,time] = date.toLocaleString('th-TH').split(' ')
 let nowtime = currentdate+' '+(+time.split(':')[0]+7) +(':'+time.split(':')[1]+':'+time.split(':')[2])
